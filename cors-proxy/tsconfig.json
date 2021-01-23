@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "esNext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "webworker"
+    ],
+    "types": [
+      "@cloudflare/workers-types"
+    ],
+    "newLine": "LF",
+    // Additional compile options
+    "noEmitOnError": true,
+    "preserveWatchOutput": true,
+    // Strict Type-Checking Options
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "importsNotUsedAsValues": "error",
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": [
+    "index.ts",
+    "./node_modules/@cloudflare/workers-types/index.d.ts",
+  ],
+}
