@@ -16,8 +16,6 @@ const patchHeaders = (original: Headers, headers?: Headers): Headers => {
   return result;
 }
 
-const host = "https://copy-cat.squiddev.workers.dev/";
-
 const handle = async (request: Request): Promise<Response> => {
   const origin = request.headers.get("origin");
   if (origin != "https://tweaked.cc" && origin != "https://copy-cat.squiddev.cc") {
@@ -26,10 +24,8 @@ const handle = async (request: Request): Promise<Response> => {
     });
   }
 
-  let path = request.url;
-  if (path.startsWith(host)) {
-    path = path.substr(host.length);
-  } else {
+  const path = decodeURIComponent(new URL(request.url).search.substring(1));
+  if (!path) {
     return new Response("Unknown host.", {
       status: 400,
     });
@@ -58,4 +54,6 @@ const handle = async (request: Request): Promise<Response> => {
   });
 }
 
-addEventListener("fetch", event => event.respondWith(handle(event.request)));
+export const config = { runtime: 'experimental-edge' };
+
+export default handle;

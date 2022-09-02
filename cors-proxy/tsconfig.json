@@ -7,9 +7,6 @@
       "esnext",
       "webworker"
     ],
-    "types": [
-      "@cloudflare/workers-types"
-    ],
     "newLine": "LF",
     // Additional compile options
     "noEmitOnError": true,
@@ -24,7 +21,6 @@
     "forceConsistentCasingInFileNames": true,
   },
   "include": [
-    "index.ts",
-    "./node_modules/@cloudflare/workers-types/index.d.ts",
+    "api/cors.ts",
   ],
 }
