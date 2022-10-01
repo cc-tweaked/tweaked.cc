@@ -1,6 +1,7 @@
 const patchHeaders = (original: Headers, headers?: Headers): Headers => {
   const result = new Headers(headers);
   result.set("access-control-allow-origin", original.get("origin")!);
+  result.set("access-control-max-age", "86400"); // 24h
 
   const method = original.get("access-control-request-method");
   if (method) result.set("access-control-allow-methods", method);

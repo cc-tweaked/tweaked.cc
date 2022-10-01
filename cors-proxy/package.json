@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "tsc -p .",
-    "upload": "npm run --silent prepare && wrangler publish"
+    "upload": "npx vercel deploy --prod"
   },
   "author": "",
   "license": "ISC",
