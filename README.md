@@ -9,8 +9,8 @@ that can be contributed to.
 
 ## Contents
  - `cors-proxy/`: This is a lightweight CORS proxy which runs in a CloudFlare
-   worker. HTTP requests made from copy-cat (and thus the tweaked.cc emulator)
-   go through this proxy.
+   worker. HTTP requests made from the tweaked.cc emulator go through this
+   proxy.
 
    It only accepts requests from the CC:T and copy-cat websites, to avoid
    abuse by other websites.
