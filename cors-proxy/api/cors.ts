@@ -40,13 +40,16 @@ const handle = async (request: Request): Promise<Response> => {
   }
 
   const forwardedHeaders = new Headers(request.headers);
-  forwardedHeaders.delete('cookie');
+  for (const header of ["connection", "host", "cookie", "x-cc-redirect"]) {
+    forwardedHeaders.delete(header);
+  }
+
   const response = await fetch(path, {
     method: request.method,
     headers: forwardedHeaders,
     body: request.body,
 
-    redirect: 'manual',
+    redirect: request.headers.get("x-cc-redirect") === "true" ? "follow" : "manual",
   });
   return new Response(response.body, {
     status: response.status,
